@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <button id="test" onclick="testFunction()">TEST Button</button>
+    </head>
+    <body>
+        <h1>JavaScript Handlers (Channels) TEST</h1>
+        <script>
+             var imageURL= "{imageurl ,request, Ok, NG, TESST, URLS} ";
+                window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
+                window.flutter_inappwebview.callHandler('testAPP')
+                  .then(function(result) {
+                    console.log(JSON.stringify(result));
+
+                    window.flutter_inappwebview
+                      .callHandler('testAPPWithArgs', 1, true, ['bar', 5], {foo: 'baz'}, result);
+                });
+            });
+
+            function testFunction(){
+                console.log('button Clicked safasdf');
+                window.flutter_inappwebview.callHandler('CLOSE_WEBVIEW',imageURL);
+            }
+            function testFunction(){
+                window.flutter_inappwebview.callHandler('PAGES',redirectURL);
+            }
+            function testFunction(){
+                window.flutter_inappwebview.callHandler('DATA',showAlertData);
+            }
+            
+        </script>
+    </body>
+</html>
