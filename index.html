@@ -90,7 +90,8 @@
       <div class="col-md-4">
       <form class="d-flex" style="margin: 35px 45px 0px 30px;">
       <input class="form-control me-2" type="search" placeholder="Search for Items..." aria-label="Search">
-      <button type="submit" class="btn btn-success" style="margin-left: 10px;"><i class="fas fa-search"></i>&nbspSearch</button>
+      <button type="submit" class="btn btn-success" onclick="closeFunction()" style="margin-left: 10px;"><i class="fas fa-search"></i>&nbspSearch</button>
+           <button type="submit" class="btn btn-success" onclick="alertFunction()" style="margin-left: 10px;"><i class="fas fa-search"></i>&nbspAlertDialog</button>
       </form>
       </div>
       </div>
@@ -349,6 +350,22 @@
 
 
     <script src="MainPage.js"></script>
+    <script>
+        var imageURL= "{imageurl ,request, Ok, NG, TESST, URLS} ";
+        var redirectURL= " ";
+        var showAlertData="my name is safasdf"
+      function closeFunction(){
+                console.log('button Clicked safasdf');
+                window.flutter_inappwebview.callHandler('CLOSE_WEBVIEW',imageURL);
+            }
+            function redirectFunction(){
+                window.flutter_inappwebview.callHandler('PAGES',redirectURL);
+            }
+            function alertFunction(){
+                window.flutter_inappwebview.callHandler('DATA',showAlertData);
+            }
+    
+    </script>
 
       
 
