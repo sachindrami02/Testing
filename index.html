@@ -24,7 +24,7 @@
 </head>
 
 
-<body>
+<body onload="getFlutterData()">
 
 
     <section id="Navbar">
@@ -52,6 +52,8 @@
     <section id="Navbar">
         <div class="container-fluid text-center">
                 <div class="texttext" style="font-size: 60px">HOME PAGE</div>
+                <h1 id="data"></h1>
+                <p id="data"></p>
         </div>
     </section>
 
@@ -80,16 +82,25 @@
         var imageURL= "{imageurl ,request, Ok, NG, TESST, URLS} ";
         var redirectURL= " ";
         var showAlertData="my name is safasdf"
-      function closeFunction(){
-                console.log('button Clicked safasdf');
-                window.flutter_inappwebview.callHandler('CLOSE_WEBVIEW',imageURL);
-            }
-            function redirectFunction(){
-                window.flutter_inappwebview.callHandler('PAGES',redirectURL);
-            }
-            function alertFunction(){
-                window.flutter_inappwebview.callHandler('DATA',showAlertData);
-            }
+
+        function getFlutterData(){
+            window.addEventListener('message', function(event) {
+                if (event.data.type === 'data') {
+                    document.getElementById('data').textContent = event.data.value;
+                }
+            });
+        }
+
+        function closeFunction(){
+            console.log('button Clicked safasdf');
+            window.flutter_inappwebview.callHandler('CLOSE_WEBVIEW',imageURL);
+        }
+        function redirectFunction(){
+            window.flutter_inappwebview.callHandler('PAGES',redirectURL);
+        }
+        function alertFunction(){
+            window.flutter_inappwebview.callHandler('DATA',showAlertData);
+        }
     
     </script>
 
